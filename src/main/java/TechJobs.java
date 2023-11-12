@@ -10,7 +10,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -77,7 +77,7 @@ public class TechJobs {
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure, so we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -112,7 +112,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -120,6 +120,24 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        // No Results in Data Base
+        if (someJobs.isEmpty()) {
+            System.out.println("No Results");
+            return;
+        }
+
+        // Iterate over each job
+        for (HashMap<String, String> job : someJobs) {
+            // Print the asterisks and the blank line between listings
+            System.out.println("\n*****");
+
+            // Iterate over entries of the job HashMap
+            for (Map.Entry<String, String> entry : job.entrySet()) {
+                // Print each entry in the required format
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+
+            System.out.println("*****");
+        }
     }
 }
